@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: 9200855152bee479baf9a41fa39ba065
+guid: 413d04e73d4b74679a214710107aba42
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1001_Diffuse
-    second: {fileID: 2800000, guid: 487739fd5f7e44c27a34b0eca3371eef, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1001_Glossiness
-    second: {fileID: 2800000, guid: e6882a51387074a3096ce3c0cf45f16f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1001_Normal
-    second: {fileID: 2800000, guid: ddbea097064464cb7afaeeb7dd673149, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1001_Specular
-    second: {fileID: 2800000, guid: 5dd40f62f3b6741d199173ffef0ea223, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1002_Diffuse
-    second: {fileID: 2800000, guid: fa98bd2bd08444c8aba4e2d99fd84a96, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Ch17_1002_Normal
-    second: {fileID: 2800000, guid: 9bed8194864e643a7b031e9f50cb21ad, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -63,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 117
+      lastFrame: 84
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
