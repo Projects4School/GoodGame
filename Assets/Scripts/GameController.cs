@@ -3,33 +3,58 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
-    public GameObject gameOverPanel;
+    public static GameController instance;
 
-    private float timeRemaining = 60f;
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI scoreText;
+    public GameObject gameOverPanel;
+    public GameObject winPanel;
+    public float TimeRemaining = 60f;
+    public int ScoreObjective;
+
+    public AudioSource DeathAudio;
+    public AudioSource WinAudio;
+
+    private int score;
+
     private bool timerIsRunning = false;
+    private bool isGameOver = false;
+    private bool isWin = false;
 
     void Start()
     {
         timerIsRunning = true;
-        gameOverPanel.SetActive(false);
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
-        if (timerIsRunning)
+        scoreText.text = string.Format("{0}/{1}", score, ScoreObjective);
+
+        if (timerIsRunning && !isWin)
         {
-            if (timeRemaining > 0)
+            if (TimeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                TimeRemaining -= Time.deltaTime;
             }
             else
             {
-                timeRemaining = 0;
+                TimeRemaining = 0;
                 timerIsRunning = false;
                 GameOver();
             }
+            DisplayTime(TimeRemaining);
         }
     }
 
@@ -41,8 +66,46 @@ public class GameController : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void AddScore(int points)
+    {
+        score += points;
+        if(score >= ScoreObjective)
+        {
+            Win();
+        }
+    }
+
+    public void SetIsGameOver(bool result)
+    {
+        isGameOver = result;
+    }
+
+    public bool IsWin()
+    {
+        return isWin;
+    }
+
+    public bool IsFinished()
+    {
+        return (isWin || isGameOver);
+    }
+
+    public bool IsGameOver()
+    {
+        return isGameOver;
+    }
+
+    void Win()
+    {
+        isWin = true;
+        winPanel.SetActive(true);
+        WinAudio.Play();
+    }
+
     void GameOver()
     {
+        isGameOver = true;
         gameOverPanel.SetActive(true);
+        DeathAudio.Play();
     }
 }
