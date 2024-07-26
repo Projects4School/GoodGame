@@ -8,49 +8,29 @@ public class PlayerControl : MonoBehaviour
     public float MoveSmoothTime;
     public float Gravity = -9.81f;
 
-    private bool isWalking;
     private Vector3 CurrentVelocity;
-    private Vector3 MoveDampVelocity;
     private CharacterController Controller;
     private Animator AnimatorController;
+    private MeshCollider Collider;
 
     // Start is called before the first frame update
     void Start()
     {
-        isWalking = false;
         Controller = GetComponent<CharacterController>();
         AnimatorController = GetComponent<Animator>();
+        Collider = GetComponent<MeshCollider>();
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        Destroy(collider.gameObject);
+        Debug.Log(collider.gameObject.name);
+        Debug.Log("triggered");
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Vector3 PlayerInput = new Vector3
-        {
-            x = Input.GetAxis("Horizontal"),
-            y = 0f,
-            z = Input.GetAxis("Vertical")
-        };
-
-        if(PlayerInput.magnitude > 1f)
-        {
-            PlayerInput.Normalize();
-        }
-
-        Vector3 MoveVector = transform.TransformDirection(PlayerInput);
-
-        CurrentVelocity = Vector3.SmoothDamp(CurrentVelocity, MoveVector * Speed, ref MoveDampVelocity, MoveSmoothTime);
-
-        if(CurrentVelocity.magnitude > 0f)
-        {
-            AnimatorController.SetBool("Walking", true);
-        }
-        else
-        {
-            AnimatorController.SetBool("Walking", false);
-        }
-        
-        Controller.Move(CurrentVelocity * Time.deltaTime);*/
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -84,19 +64,5 @@ public class PlayerControl : MonoBehaviour
         }
 
         Controller.Move(CurrentVelocity);
-
-        /*if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            isWalking = true;
-        }
-        else
-        {
-            isWalking = false;
-        }
-
-        if(isWalking)
-        {
-            transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-        }*/
     }
 }
