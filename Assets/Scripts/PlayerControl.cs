@@ -11,14 +11,12 @@ public class PlayerControl : MonoBehaviour
     private Vector3 CurrentVelocity;
     private CharacterController Controller;
     private Animator AnimatorController;
-    private MeshCollider Collider;
 
     // Start is called before the first frame update
     void Start()
     {
         Controller = GetComponent<CharacterController>();
         AnimatorController = GetComponent<Animator>();
-        Collider = GetComponent<MeshCollider>();
     }
 
     void OnTriggerEnter(Collider collider)
