@@ -3102,7 +3102,7 @@ MonoBehaviour:
   scoreText: {fileID: 425385970}
   gameOverPanel: {fileID: 978776247}
   winPanel: {fileID: 1853500385}
-  TimeRemaining: 2
+  TimeRemaining: 60
   ScoreObjective: 10
   DeathAudio: {fileID: 338711181}
   WinAudio: {fileID: 800798825}
