@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static System.Net.Mime.MediaTypeNames;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -8,5 +9,16 @@ public class SceneLoader : MonoBehaviour
     {
         
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+             
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        
+        Application.Quit();
+        #endif
     }
 }
